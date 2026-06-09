@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <DUT Name="ValueType" Id="{4aa9d4f1-e1bf-48ab-ac3b-e0269e0f158d}">
+    <Declaration><![CDATA[TYPE ValueType : __SYSTEM.TYPE_CLASS; END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

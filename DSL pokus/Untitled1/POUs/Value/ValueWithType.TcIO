@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <Itf Name="ValueWithType" Id="{fc6a283b-022e-4806-bd75-e2d56e43f80a}">
+    <Declaration><![CDATA[INTERFACE ValueWithType EXTENDS __SYSTEM.IQueryInterface
+]]></Declaration>
+    <Property Name="ValueType" Id="{4ee1d9d0-c89f-454b-83a2-53c3f3807e14}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY ValueType : ValueType]]></Declaration>
+      <Get Name="Get" Id="{8394b104-970b-4e5a-bcf4-67612d32f55c}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

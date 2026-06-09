@@ -1,0 +1,23 @@
+INTERFACE ValueRead EXTENDS ValueWithType
+
+BEGIN
+	METHOD Get
+		VAR_INPUT
+			destination : ANY;
+		END_VAR
+		
+	END_METHOD
+
+	METHOD GetAsString : T_MaxString
+		VAR_INPUT
+		END_VAR
+		
+	END_METHOD
+
+	METHOD GetAsType
+		VAR_INPUT
+			destination : __SYSTEM.AnyType;
+		END_VAR
+		
+	END_METHOD
+END_INTERFACE

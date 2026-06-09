@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="ValueLrealRead" Id="{7bbb62ae-f35c-4d8f-a9b3-e1cd293b29cb}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+//{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueLrealRead EXTENDS ValueBase IMPLEMENTS ValueRead
+VAR
+	value : LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Get" Id="{c695d588-c4b2-45c8-956d-6f9b3ebb2218}">
+      <Declaration><![CDATA[METHOD Get
+VAR_INPUT
+	destination : ANY;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetAsString" Id="{e488a0bb-8605-44e1-9885-c332d07c2b85}">
+      <Declaration><![CDATA[METHOD GetAsString : T_MaxString
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetAsType" Id="{d4bab38f-a159-479b-843b-316f681562c1}">
+      <Declaration><![CDATA[METHOD GetAsType
+VAR_INPUT
+	destination : __SYSTEM.AnyType;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

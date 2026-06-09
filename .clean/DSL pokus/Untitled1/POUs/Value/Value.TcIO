@@ -1,0 +1,25 @@
+{attribute 'linkalways'}
+INTERFACE Value EXTENDS ValueRead
+
+BEGIN
+	METHOD Set
+		VAR_INPUT
+			source : ANY;
+		END_VAR
+		
+	END_METHOD
+
+	METHOD SetFromString
+		VAR_INPUT
+			value : T_MaxString;
+		END_VAR
+		
+	END_METHOD
+
+	METHOD SetFromType
+		VAR_INPUT
+			source : __SYSTEM.AnyType;
+		END_VAR
+		
+	END_METHOD
+END_INTERFACE

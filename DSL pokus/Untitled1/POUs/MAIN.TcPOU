@@ -4,8 +4,8 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 END_VAR
-]]>
-    </Declaration>
+
+    ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>

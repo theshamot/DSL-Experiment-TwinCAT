@@ -1,0 +1,9 @@
+INTERFACE ValueWithType EXTENDS __SYSTEM.IQueryInterface
+
+BEGIN
+	{attribute 'monitoring' := 'call'}
+	PROPERTY ValueType : ValueType
+	GET
+	END_GET
+	END_PROPERTY
+END_INTERFACE

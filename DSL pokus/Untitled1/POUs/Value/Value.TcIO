@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <Itf Name="Value" Id="{005347b3-e21f-4935-9d8b-47c49c306fc1}">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+INTERFACE Value EXTENDS ValueRead
+]]></Declaration>
+    <Method Name="Set" Id="{7bddd189-43a2-4da4-90cb-5ed3aee51d26}">
+      <Declaration><![CDATA[METHOD Set
+VAR_INPUT
+	source : ANY;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="SetFromString" Id="{ff3161b6-826a-4a9a-bb0d-cdedde7b5c1a}">
+      <Declaration><![CDATA[METHOD SetFromString
+VAR_INPUT
+	value : T_MaxString;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="SetFromType" Id="{b362c54f-f37d-44f0-9a23-8e6505d00685}">
+      <Declaration><![CDATA[METHOD SetFromType
+VAR_INPUT
+	source : __SYSTEM.AnyType;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

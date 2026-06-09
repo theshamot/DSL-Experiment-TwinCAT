@@ -1,0 +1,34 @@
+{attribute 'linkalways'}
+//{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueLrealRead EXTENDS ValueBase IMPLEMENTS ValueRead
+	VAR
+		value : LREAL;
+	END_VAR
+	
+BEGIN
+	METHOD Get
+		VAR_INPUT
+			destination : ANY;
+		END_VAR
+		
+	BEGIN
+		
+	END_METHOD
+
+	METHOD GetAsString : T_MaxString
+		VAR_INPUT
+		END_VAR
+		
+	BEGIN
+		
+	END_METHOD
+
+	METHOD GetAsType
+		VAR_INPUT
+			destination : __SYSTEM.AnyType;
+		END_VAR
+		
+	BEGIN
+		
+	END_METHOD
+END_FUNCTION_BLOCK

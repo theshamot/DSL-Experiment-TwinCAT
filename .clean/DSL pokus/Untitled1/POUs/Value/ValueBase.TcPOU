@@ -1,0 +1,19 @@
+{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ABSTRACT ValueBase IMPLEMENTS ValueWithType
+	VAR
+		_ValueType : ValueType;
+	END_VAR
+	
+BEGIN
+	{attribute 'monitoring' := 'call'}
+	PROPERTY ValueType : ValueType
+	GET
+		VAR
+		END_VAR
+		
+	BEGIN
+		ValueType := _ValueType;
+	END_GET
+	END_PROPERTY
+END_FUNCTION_BLOCK

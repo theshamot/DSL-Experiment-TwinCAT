@@ -1,0 +1,225 @@
+FUNCTION ConvertAnyType : BOOL
+VAR_INPUT
+	source      : __SYSTEM.AnyType;
+	destination : __SYSTEM.AnyType;
+END_VAR
+VAR
+	sourceFamily      : USINT; // 0 = ANY_INT, 1 = ANY_REAL, 2 = ANY_BIT, 3 = ANY_DATE
+	destinationFamily : USINT;
+	lrealIntermediate : LREAL;
+	ulintIntermediate : ULINT;
+	valueSint         : SINT;
+	valueInt          : INT;
+	valueDint         : DINT;
+	valueLint         : LINT;
+	valueUsint        : USINT;
+	valueUint         : UINT;
+	valueUdint        : UDINT;
+	valueUlint        : ULINT;
+	valueReal         : REAL;
+	valueByte         : BYTE;
+	valueWord         : WORD;
+	valueDword        : DWORD;
+	valueLword        : LWORD;
+	valueTime         : TIME;
+	valueDate         : DATE;
+	valueDateAndTime  : DT;
+	valueTimeOfDay    : TOD;
+	valueLtime        : LTIME;
+END_VAR
+
+BEGIN
+
+// --- Classify source ---
+CASE source.TypeClass OF
+	__SYSTEM.TYPE_CLASS.TYPE_SINT,
+	__SYSTEM.TYPE_CLASS.TYPE_INT,
+	__SYSTEM.TYPE_CLASS.TYPE_DINT,
+	__SYSTEM.TYPE_CLASS.TYPE_LINT,
+	__SYSTEM.TYPE_CLASS.TYPE_USINT,
+	__SYSTEM.TYPE_CLASS.TYPE_UINT,
+	__SYSTEM.TYPE_CLASS.TYPE_UDINT,
+	__SYSTEM.TYPE_CLASS.TYPE_ULINT:
+		sourceFamily := 0;
+	__SYSTEM.TYPE_CLASS.TYPE_REAL,
+	__SYSTEM.TYPE_CLASS.TYPE_LREAL:
+		sourceFamily := 1;
+	__SYSTEM.TYPE_CLASS.TYPE_BYTE,
+	__SYSTEM.TYPE_CLASS.TYPE_WORD,
+	__SYSTEM.TYPE_CLASS.TYPE_DWORD,
+	__SYSTEM.TYPE_CLASS.TYPE_LWORD:
+		sourceFamily := 2;
+	__SYSTEM.TYPE_CLASS.TYPE_TIME,
+	__SYSTEM.TYPE_CLASS.TYPE_DATE,
+	__SYSTEM.TYPE_CLASS.TYPE_DATEANDTIME,
+	__SYSTEM.TYPE_CLASS.TYPE_TIMEOFDAY,
+	__SYSTEM.TYPE_CLASS.TYPE_LTIME:
+		sourceFamily := 3;
+	ELSE
+		RETURN;
+END_CASE
+
+// --- Classify destination ---
+CASE destination.TypeClass OF
+	__SYSTEM.TYPE_CLASS.TYPE_SINT,
+	__SYSTEM.TYPE_CLASS.TYPE_INT,
+	__SYSTEM.TYPE_CLASS.TYPE_DINT,
+	__SYSTEM.TYPE_CLASS.TYPE_LINT,
+	__SYSTEM.TYPE_CLASS.TYPE_USINT,
+	__SYSTEM.TYPE_CLASS.TYPE_UINT,
+	__SYSTEM.TYPE_CLASS.TYPE_UDINT,
+	__SYSTEM.TYPE_CLASS.TYPE_ULINT:
+		destinationFamily := 0;
+	__SYSTEM.TYPE_CLASS.TYPE_REAL,
+	__SYSTEM.TYPE_CLASS.TYPE_LREAL:
+		destinationFamily := 1;
+	__SYSTEM.TYPE_CLASS.TYPE_BYTE,
+	__SYSTEM.TYPE_CLASS.TYPE_WORD,
+	__SYSTEM.TYPE_CLASS.TYPE_DWORD,
+	__SYSTEM.TYPE_CLASS.TYPE_LWORD:
+		destinationFamily := 2;
+	__SYSTEM.TYPE_CLASS.TYPE_TIME,
+	__SYSTEM.TYPE_CLASS.TYPE_DATE,
+	__SYSTEM.TYPE_CLASS.TYPE_DATEANDTIME,
+	__SYSTEM.TYPE_CLASS.TYPE_TIMEOFDAY,
+	__SYSTEM.TYPE_CLASS.TYPE_LTIME:
+		destinationFamily := 3;
+	ELSE
+		RETURN;
+END_CASE
+
+// --- LREAL route: {ANY_INT, ANY_REAL} <-> {ANY_INT, ANY_REAL} ---
+IF sourceFamily <= 1 AND_THEN destinationFamily <= 1 THEN
+	CASE source.TypeClass OF
+		__SYSTEM.TYPE_CLASS.TYPE_SINT:  lrealIntermediate := SINT_TO_LREAL(PSINT_TO_SINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_INT:   lrealIntermediate := INT_TO_LREAL(PINT_TO_INT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_DINT:  lrealIntermediate := DINT_TO_LREAL(PDINT_TO_DINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_LINT:  lrealIntermediate := LINT_TO_LREAL(PLINT_TO_LINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_USINT: lrealIntermediate := USINT_TO_LREAL(PUSINT_TO_USINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_UINT:  lrealIntermediate := UINT_TO_LREAL(PUINT_TO_UINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_UDINT: lrealIntermediate := UDINT_TO_LREAL(PUDINT_TO_UDINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_ULINT: lrealIntermediate := ULINT_TO_LREAL(PULINT_TO_ULINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_REAL:  lrealIntermediate := REAL_TO_LREAL(PREAL_TO_REAL(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_LREAL: lrealIntermediate := PLREAL_TO_LREAL(source.pValue);
+	END_CASE
+	CASE destination.TypeClass OF
+		__SYSTEM.TYPE_CLASS.TYPE_SINT:
+			valueSint := LREAL_TO_SINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueSint), SIZEOF(valueSint));
+		__SYSTEM.TYPE_CLASS.TYPE_INT:
+			valueInt := LREAL_TO_INT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueInt), SIZEOF(valueInt));
+		__SYSTEM.TYPE_CLASS.TYPE_DINT:
+			valueDint := LREAL_TO_DINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueDint), SIZEOF(valueDint));
+		__SYSTEM.TYPE_CLASS.TYPE_LINT:
+			valueLint := LREAL_TO_LINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueLint), SIZEOF(valueLint));
+		__SYSTEM.TYPE_CLASS.TYPE_USINT:
+			valueUsint := LREAL_TO_USINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUsint), SIZEOF(valueUsint));
+		__SYSTEM.TYPE_CLASS.TYPE_UINT:
+			valueUint := LREAL_TO_UINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUint), SIZEOF(valueUint));
+		__SYSTEM.TYPE_CLASS.TYPE_UDINT:
+			valueUdint := LREAL_TO_UDINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUdint), SIZEOF(valueUdint));
+		__SYSTEM.TYPE_CLASS.TYPE_ULINT:
+			valueUlint := LREAL_TO_ULINT(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUlint), SIZEOF(valueUlint));
+		__SYSTEM.TYPE_CLASS.TYPE_REAL:
+			valueReal := LREAL_TO_REAL(lrealIntermediate);
+			MEMCPY(destination.pValue, ADR(valueReal), SIZEOF(valueReal));
+		__SYSTEM.TYPE_CLASS.TYPE_LREAL:
+			MEMCPY(destination.pValue, ADR(lrealIntermediate), SIZEOF(lrealIntermediate));
+	END_CASE
+	ConvertAnyType := TRUE;
+	RETURN;
+END_IF
+
+// --- ULINT route: ANY_INT <-> ANY_BIT, ANY_INT <-> ANY_DATE, ANY_BIT <-> ANY_BIT, ANY_DATE <-> ANY_DATE ---
+// Excluded: ANY_BIT <-> ANY_DATE, anything involving ANY_REAL
+IF (sourceFamily = 0 AND_THEN (destinationFamily = 2 OR_ELSE destinationFamily = 3)) OR_ELSE
+   ((sourceFamily = 2 OR_ELSE sourceFamily = 3) AND_THEN destinationFamily = 0) OR_ELSE
+   (sourceFamily = 2 AND_THEN destinationFamily = 2) OR_ELSE
+   (sourceFamily = 3 AND_THEN destinationFamily = 3)
+THEN
+	CASE source.TypeClass OF
+		__SYSTEM.TYPE_CLASS.TYPE_SINT:  ulintIntermediate := SINT_TO_ULINT(PSINT_TO_SINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_INT:   ulintIntermediate := INT_TO_ULINT(PINT_TO_INT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_DINT:  ulintIntermediate := DINT_TO_ULINT(PDINT_TO_DINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_LINT:  ulintIntermediate := LINT_TO_ULINT(PLINT_TO_LINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_USINT: ulintIntermediate := USINT_TO_ULINT(PUSINT_TO_USINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_UINT:  ulintIntermediate := UINT_TO_ULINT(PUINT_TO_UINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_UDINT: ulintIntermediate := UDINT_TO_ULINT(PUDINT_TO_UDINT(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_ULINT: ulintIntermediate := PULINT_TO_ULINT(source.pValue);
+		__SYSTEM.TYPE_CLASS.TYPE_BYTE:  ulintIntermediate := BYTE_TO_ULINT(source.pValue^);
+		__SYSTEM.TYPE_CLASS.TYPE_WORD:  ulintIntermediate := WORD_TO_ULINT(PWORD_TO_WORD(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_DWORD: ulintIntermediate := DWORD_TO_ULINT(PDWORD_TO_DWORD(source.pValue));
+		__SYSTEM.TYPE_CLASS.TYPE_LWORD: ulintIntermediate := LWORD_TO_ULINT(PLWORD_TO_LWORD(source.pValue));
+		// TIME/DATE/DT/TOD are stored as UDINT (32-bit); LTIME shares layout with LINT (64-bit ns)
+		__SYSTEM.TYPE_CLASS.TYPE_TIME:        ulintIntermediate := UDINT_TO_ULINT(TIME_TO_UDINT(PTIME_TO_TIME(source.pValue)));
+		__SYSTEM.TYPE_CLASS.TYPE_DATE:        ulintIntermediate := UDINT_TO_ULINT(DATE_TO_UDINT(PDATE_TO_DATE(source.pValue)));
+		__SYSTEM.TYPE_CLASS.TYPE_DATEANDTIME: ulintIntermediate := UDINT_TO_ULINT(DT_TO_UDINT(PDT_TO_DT(source.pValue)));
+		__SYSTEM.TYPE_CLASS.TYPE_TIMEOFDAY:   ulintIntermediate := UDINT_TO_ULINT(TOD_TO_UDINT(PTOD_TO_TOD(source.pValue)));
+		__SYSTEM.TYPE_CLASS.TYPE_LTIME:       ulintIntermediate := LINT_TO_ULINT(PLINT_TO_LINT(source.pValue));
+	END_CASE
+	CASE destination.TypeClass OF
+		__SYSTEM.TYPE_CLASS.TYPE_SINT:
+			valueSint := ULINT_TO_SINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueSint), SIZEOF(valueSint));
+		__SYSTEM.TYPE_CLASS.TYPE_INT:
+			valueInt := ULINT_TO_INT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueInt), SIZEOF(valueInt));
+		__SYSTEM.TYPE_CLASS.TYPE_DINT:
+			valueDint := ULINT_TO_DINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueDint), SIZEOF(valueDint));
+		__SYSTEM.TYPE_CLASS.TYPE_LINT:
+			valueLint := ULINT_TO_LINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueLint), SIZEOF(valueLint));
+		__SYSTEM.TYPE_CLASS.TYPE_USINT:
+			valueUsint := ULINT_TO_USINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUsint), SIZEOF(valueUsint));
+		__SYSTEM.TYPE_CLASS.TYPE_UINT:
+			valueUint := ULINT_TO_UINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUint), SIZEOF(valueUint));
+		__SYSTEM.TYPE_CLASS.TYPE_UDINT:
+			valueUdint := ULINT_TO_UDINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueUdint), SIZEOF(valueUdint));
+		__SYSTEM.TYPE_CLASS.TYPE_ULINT:
+			valueUlint := ulintIntermediate;
+			MEMCPY(destination.pValue, ADR(valueUlint), SIZEOF(valueUlint));
+		__SYSTEM.TYPE_CLASS.TYPE_BYTE:
+			valueByte := ULINT_TO_BYTE(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueByte), SIZEOF(valueByte));
+		__SYSTEM.TYPE_CLASS.TYPE_WORD:
+			valueWord := ULINT_TO_WORD(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueWord), SIZEOF(valueWord));
+		__SYSTEM.TYPE_CLASS.TYPE_DWORD:
+			valueDword := ULINT_TO_DWORD(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueDword), SIZEOF(valueDword));
+		__SYSTEM.TYPE_CLASS.TYPE_LWORD:
+			valueLword := ULINT_TO_LWORD(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueLword), SIZEOF(valueLword));
+		__SYSTEM.TYPE_CLASS.TYPE_TIME:
+			valueTime := UDINT_TO_TIME(ULINT_TO_UDINT(ulintIntermediate));
+			MEMCPY(destination.pValue, ADR(valueTime), SIZEOF(valueTime));
+		__SYSTEM.TYPE_CLASS.TYPE_DATE:
+			valueDate := UDINT_TO_DATE(ULINT_TO_UDINT(ulintIntermediate));
+			MEMCPY(destination.pValue, ADR(valueDate), SIZEOF(valueDate));
+		__SYSTEM.TYPE_CLASS.TYPE_DATEANDTIME:
+			valueDateAndTime := UDINT_TO_DT(ULINT_TO_UDINT(ulintIntermediate));
+			MEMCPY(destination.pValue, ADR(valueDateAndTime), SIZEOF(valueDateAndTime));
+		__SYSTEM.TYPE_CLASS.TYPE_TIMEOFDAY:
+			valueTimeOfDay := UDINT_TO_TOD(ULINT_TO_UDINT(ulintIntermediate));
+			MEMCPY(destination.pValue, ADR(valueTimeOfDay), SIZEOF(valueTimeOfDay));
+		// Write raw bits as LINT — same in-memory layout as LTIME
+		__SYSTEM.TYPE_CLASS.TYPE_LTIME:
+			valueLint := ULINT_TO_LINT(ulintIntermediate);
+			MEMCPY(destination.pValue, ADR(valueLint), SIZEOF(valueLint));
+	END_CASE
+	ConvertAnyType := TRUE;
+	RETURN;
+END_IF
+
+END_FUNCTION

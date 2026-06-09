@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="ValueBase" Id="{6e437225-aae5-40c6-9153-868cb94efe47}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ABSTRACT ValueBase IMPLEMENTS ValueWithType
+VAR
+	_ValueType : ValueType;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="ValueType" Id="{3135a025-3087-412d-807e-194fe88e262c}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY ValueType : ValueType]]></Declaration>
+      <Get Name="Get" Id="{e4a8edd3-49e5-4d57-b9f9-fa09826b7b04}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ValueType := _ValueType;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>
