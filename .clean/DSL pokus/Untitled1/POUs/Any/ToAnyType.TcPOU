@@ -1,0 +1,8 @@
+FUNCTION ToAnyType : __SYSTEM.AnyType
+	VAR_INPUT
+		object		: ANY;
+	END_VAR
+	
+BEGIN
+	ToAnyType := object;
+END_FUNCTION

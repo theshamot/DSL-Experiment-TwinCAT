@@ -6,11 +6,23 @@
 FUNCTION_BLOCK ABSTRACT ValueBase IMPLEMENTS ValueWithType
 VAR
 	_ValueType : ValueType;
+	thisAnyType : __SYSTEM.AnyType;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Method Name="GetThisAnyType" Id="{7b701cad-2215-4e90-87e0-6f30e1db9f19}">
+      <Declaration><![CDATA[{attribute 'call_after_global_init_slot' := '1'}
+{attribute 'call_after_online_change_slot' := '1'}
+METHOD PROTECTED ABSTRACT GetThisAnyType
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
     <Property Name="ValueType" Id="{3135a025-3087-412d-807e-194fe88e262c}">
       <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
 PROPERTY ValueType : ValueType]]></Declaration>

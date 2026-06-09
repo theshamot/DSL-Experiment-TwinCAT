@@ -1,7 +1,7 @@
 INTERFACE ValueRead EXTENDS ValueWithType
 
 BEGIN
-	METHOD Get
+	METHOD Get : BOOL
 		VAR_INPUT
 			destination : ANY;
 		END_VAR
@@ -14,7 +14,7 @@ BEGIN
 		
 	END_METHOD
 
-	METHOD GetAsType
+	METHOD GetAsType : BOOL
 		VAR_INPUT
 			destination : __SYSTEM.AnyType;
 		END_VAR

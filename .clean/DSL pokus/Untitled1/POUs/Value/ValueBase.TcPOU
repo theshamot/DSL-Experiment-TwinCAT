@@ -3,9 +3,20 @@
 FUNCTION_BLOCK ABSTRACT ValueBase IMPLEMENTS ValueWithType
 	VAR
 		_ValueType : ValueType;
+		thisAnyType : __SYSTEM.AnyType;
 	END_VAR
 	
 BEGIN
+	{attribute 'call_after_global_init_slot' := '1'}
+	{attribute 'call_after_online_change_slot' := '1'}
+	METHOD PROTECTED ABSTRACT GetThisAnyType
+		VAR_INPUT
+		END_VAR
+		
+	BEGIN
+		
+	END_METHOD
+
 	{attribute 'monitoring' := 'call'}
 	PROPERTY ValueType : ValueType
 	GET

@@ -2,21 +2,21 @@
 INTERFACE Value EXTENDS ValueRead
 
 BEGIN
-	METHOD Set
+	METHOD Set : BOOL
 		VAR_INPUT
 			source : ANY;
 		END_VAR
 		
 	END_METHOD
 
-	METHOD SetFromString
+	METHOD SetFromString : BOOL
 		VAR_INPUT
 			value : T_MaxString;
 		END_VAR
 		
 	END_METHOD
 
-	METHOD SetFromType
+	METHOD SetFromType : BOOL
 		VAR_INPUT
 			source : __SYSTEM.AnyType;
 		END_VAR

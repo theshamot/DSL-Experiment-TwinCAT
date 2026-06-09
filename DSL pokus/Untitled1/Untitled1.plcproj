@@ -21,10 +21,17 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Any\ToAnyType.TcPOU">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PrimitiveValues\ValueLrealRead.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PrimitiveValues\ValueLreal.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Value\Value.TcIO">
@@ -50,6 +57,7 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Conversion" />
+    <Folder Include="POUs\Any" />
     <Folder Include="POUs\PrimitiveValues" />
     <Folder Include="POUs\Value" />
     <Folder Include="VISUs" />

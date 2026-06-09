@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="ValueLreal" Id="{b7b078d1-e9d0-4fd9-8a17-f8630bb0b52f}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueLreal EXTENDS ValueLrealRead IMPLEMENTS Value
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Set" Id="{13bc8491-1df9-43a8-a775-82e554a66250}">
+      <Declaration><![CDATA[METHOD Set : BOOL
+VAR_INPUT
+	source : ANY;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Set := ConvertAnyType(source, thisAnyType);
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetFromString" Id="{b7de7043-b32b-4e78-83d1-fdb44e57e319}">
+      <Declaration><![CDATA[METHOD SetFromString : BOOL
+VAR_INPUT
+	value : T_MaxString;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisValue := STRING_TO_LREAL(value);
+
+SetFromString := TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetFromType" Id="{d8e29480-2cb5-4487-a342-5b14a745bc95}">
+      <Declaration><![CDATA[METHOD SetFromType : BOOL
+VAR_INPUT
+	source : __SYSTEM.AnyType;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SetFromType := ConvertAnyType(source, thisAnyType);
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

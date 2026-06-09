@@ -2,23 +2,36 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="ValueLrealRead" Id="{7bbb62ae-f35c-4d8f-a9b3-e1cd293b29cb}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'linkalways'}
-//{attribute 'hide_all_locals'}
+{attribute 'hide_all_locals'}
 FUNCTION_BLOCK ValueLrealRead EXTENDS ValueBase IMPLEMENTS ValueRead
 VAR
-	value : LREAL;
+	thisValue : LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Method Name="FB_init" Id="{ac81c42f-d8fc-4c2d-897f-b50af6267b14}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_ValueType := __SYSTEM.TYPE_CLASS.TYPE_LREAL;
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="Get" Id="{c695d588-c4b2-45c8-956d-6f9b3ebb2218}">
-      <Declaration><![CDATA[METHOD Get
+      <Declaration><![CDATA[METHOD Get : BOOL
 VAR_INPUT
 	destination : ANY;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[Get := ConvertAnyType(thisAnyType, destination);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="GetAsString" Id="{e488a0bb-8605-44e1-9885-c332d07c2b85}">
@@ -27,17 +40,31 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[GetAsString := TO_STRING(thisValue);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="GetAsType" Id="{d4bab38f-a159-479b-843b-316f681562c1}">
-      <Declaration><![CDATA[METHOD GetAsType
+      <Declaration><![CDATA[METHOD GetAsType : BOOL
 VAR_INPUT
 	destination : __SYSTEM.AnyType;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[GetAsType := ConvertAnyType(thisAnyType, destination);
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetThisAnyType" Id="{0517e9a3-4e7f-42b0-b9dc-be44943d65f1}">
+      <Declaration><![CDATA[{attribute 'call_after_global_init_slot' := '1'}
+{attribute 'call_after_online_change_slot' := '1'}
+METHOD PROTECTED GetThisAnyType
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisAnyType := ToAnyType(thisValue);
+]]></ST>
       </Implementation>
     </Method>
   </POU>

@@ -4,7 +4,7 @@
     <Declaration><![CDATA[INTERFACE ValueRead EXTENDS ValueWithType
 ]]></Declaration>
     <Method Name="Get" Id="{bcbdc575-c1a9-4b54-b3d9-1957ab36cce4}">
-      <Declaration><![CDATA[METHOD Get
+      <Declaration><![CDATA[METHOD Get : BOOL
 VAR_INPUT
 	destination : ANY;
 END_VAR
@@ -17,7 +17,7 @@ END_VAR
 ]]></Declaration>
     </Method>
     <Method Name="GetAsType" Id="{34d57f9b-0840-4c34-a336-e72acbc66aa9}">
-      <Declaration><![CDATA[METHOD GetAsType
+      <Declaration><![CDATA[METHOD GetAsType : BOOL
 VAR_INPUT
 	destination : __SYSTEM.AnyType;
 END_VAR
