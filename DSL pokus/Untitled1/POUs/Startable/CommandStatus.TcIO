@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <Itf Name="CommandStatus" Id="{640d2fb6-26ec-443c-a114-50dd19f0daa9}">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+INTERFACE CommandStatus EXTENDS __SYSTEM.IQueryInterface
+]]></Declaration>
+    <Property Name="Busy" Id="{4c2439e9-25fa-4a36-8fd0-4c79981cad60}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Busy : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ee70d7ab-49f3-463b-98f3-7386c1ba53c9}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="Done" Id="{00363a4c-5a65-4f2b-ae4d-7cbe9769131d}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Done : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ffd651f6-5507-4575-9c02-84fbbd175f1a}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="Error" Id="{bfc3a5fe-2755-49d4-a606-8b367a1f3603}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Error : BOOL]]></Declaration>
+      <Get Name="Get" Id="{6b7e29ad-592c-4d26-a097-c6adae0f1094}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="ErrorMessage" Id="{4eb8607d-b69d-43f1-a399-0771c18fef3d}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY ErrorMessage : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{63fe3413-d811-4454-8aa4-2d944fcf29c6}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

@@ -1,0 +1,28 @@
+{attribute 'linkalways'}
+INTERFACE CommandStatus EXTENDS __SYSTEM.IQueryInterface
+
+BEGIN
+	{attribute 'monitoring' := 'call'}
+	PROPERTY Busy : BOOL
+	GET
+	END_GET
+	END_PROPERTY
+
+	{attribute 'monitoring' := 'call'}
+	PROPERTY Done : BOOL
+	GET
+	END_GET
+	END_PROPERTY
+
+	{attribute 'monitoring' := 'call'}
+	PROPERTY Error : BOOL
+	GET
+	END_GET
+	END_PROPERTY
+
+	{attribute 'monitoring' := 'call'}
+	PROPERTY ErrorMessage : T_MaxString
+	GET
+	END_GET
+	END_PROPERTY
+END_INTERFACE

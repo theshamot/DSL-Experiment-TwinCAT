@@ -3,37 +3,31 @@
 FUNCTION_BLOCK ValueLtime EXTENDS ValueLtimeRead IMPLEMENTS Value
 	VAR
 	END_VAR
-
+	
 BEGIN
-	METHOD Set : BOOL
+	METHOD SetFromType : BOOL
 		VAR_INPUT
-			source : ANY;
+			source : __SYSTEM.AnyType;
 		END_VAR
-
 	BEGIN
-		Set := ConvertAnyType(source, thisAnyType);
-
+		SetFromType := ConvertAnyType(source, thisAnyType);
 	END_METHOD
 
 	METHOD SetFromString : BOOL
 		VAR_INPUT
 			value : T_MaxString;
 		END_VAR
-
 	BEGIN
 		thisValue := STRING_TO_LTIME(value);
-
+		
 		SetFromString := TRUE;
-
 	END_METHOD
 
-	METHOD SetFromType : BOOL
+	METHOD Set : BOOL
 		VAR_INPUT
-			source : __SYSTEM.AnyType;
+			source : ANY;
 		END_VAR
-
 	BEGIN
-		SetFromType := ConvertAnyType(source, thisAnyType);
-
+		Set := ConvertAnyType(source, thisAnyType);
 	END_METHOD
 END_FUNCTION_BLOCK

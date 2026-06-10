@@ -34,6 +34,12 @@
     <Compile Include="POUs\PrimitiveValues\ValueLreal.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Startable\CommandStatus.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Startable\Startable.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Value\Value.TcIO">
       <SubType>Code</SubType>
     </Compile>
@@ -178,6 +184,7 @@
     <Folder Include="GVLs" />
     <Folder Include="POUs\Conversion" />
     <Folder Include="POUs\Any" />
+    <Folder Include="POUs\Startable" />
     <Folder Include="POUs\PrimitiveValues" />
     <Folder Include="POUs\Value" />
     <Folder Include="VISUs" />

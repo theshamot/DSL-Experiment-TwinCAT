@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <Itf Name="Startable" Id="{340a0c3d-feb4-48a0-ac72-cfe9dee7ee75}">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+INTERFACE Startable EXTENDS __SYSTEM.IQueryInterface
+]]></Declaration>
+    <Method Name="Start" Id="{7e4dc126-77fa-4b6a-ba6c-f59aa52f4abb}">
+      <Declaration><![CDATA[METHOD Start : CommandStatus]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

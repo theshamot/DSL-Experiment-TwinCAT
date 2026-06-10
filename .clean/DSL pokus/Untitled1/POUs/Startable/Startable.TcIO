@@ -1,0 +1,7 @@
+{attribute 'linkalways'}
+INTERFACE Startable EXTENDS __SYSTEM.IQueryInterface
+
+BEGIN
+	METHOD Start : CommandStatus
+	END_METHOD
+END_INTERFACE
