@@ -21,174 +21,171 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Any\ToAnyType.TcPOU">
+    <Compile Include="Lib\Any\ToAnyType.TcPOU">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="POUs\MAIN.TcPOU">
+    <Compile Include="Lib\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLrealRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLrealRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLreal.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLreal.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Startable\CommandStatus.TcIO">
+    <Compile Include="Lib\Startable\CommandStatus.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Startable\Startable.TcIO">
+    <Compile Include="Lib\Startable\Startable.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Value\Value.TcIO">
+    <Compile Include="Lib\Value\Value.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Value\ValueBase.TcPOU">
+    <Compile Include="Lib\Value\ValueBase.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Value\ValueWithType.TcIO">
+    <Compile Include="Lib\Value\ValueWithType.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Value\ValueRead.TcIO">
+    <Compile Include="Lib\Value\ValueRead.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Value\ValueType.TcDUT">
+    <Compile Include="Lib\Value\ValueType.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Conversion\ConvertAnyType.TcPOU">
+    <Compile Include="Lib\Conversion\ConvertAnyType.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueByte.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueByte.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueByteRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueByteRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDate.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDate.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDateRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDateRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDt.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDt.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDtRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDtRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDword.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDword.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueDwordRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueDwordRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueInt.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueInt.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueIntRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueIntRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLtime.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLtime.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLtimeRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLtimeRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLword.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLword.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueLwordRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueLwordRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueReal.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueReal.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueRealRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueRealRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueSint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueSint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueSintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueSintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueString.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueString.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueStringRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueStringRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueTime.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueTime.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueTimeRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueTimeRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueTod.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueTod.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueTodRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueTodRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUdint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUdint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUdintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUdintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUlint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUlint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUlintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUlintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUsint.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUsint.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueUsintRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueUsintRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueWord.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueWord.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueWordRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueWordRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueWstring.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueWstring.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PrimitiveValues\ValueWstringRead.TcPOU">
+    <Compile Include="Lib\PrimitiveValues\ValueWstringRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DUTs" />
-    <Folder Include="GVLs" />
-    <Folder Include="POUs\Conversion" />
-    <Folder Include="POUs\Any" />
-    <Folder Include="POUs\Startable" />
-    <Folder Include="POUs\PrimitiveValues" />
-    <Folder Include="POUs\Value" />
-    <Folder Include="VISUs" />
-    <Folder Include="POUs" />
+    <Folder Include="Lib\Conversion" />
+    <Folder Include="Lib\Any" />
+    <Folder Include="Lib\Startable" />
+    <Folder Include="Lib\PrimitiveValues" />
+    <Folder Include="Lib\Value" />
+    <Folder Include="Lib" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="Tc2_Standard">
