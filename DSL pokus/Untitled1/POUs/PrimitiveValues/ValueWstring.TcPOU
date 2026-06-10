@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ValueWstring" Id="{8a1a00ae-8a07-478d-a0b4-964e0dbbf854}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueWstring EXTENDS ValueWstringRead IMPLEMENTS Value
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="SetFromType" Id="{75a64ec5-171c-44f4-96cd-18c9a9a34153}">
+      <Declaration><![CDATA[METHOD SetFromType : BOOL
+VAR_INPUT
+	source : __SYSTEM.AnyType;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SetFromType := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetFromString" Id="{9ce71543-d89e-460c-9aea-64fc927676f6}">
+      <Declaration><![CDATA[METHOD SetFromString : BOOL
+VAR_INPUT
+	value : T_MaxString;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisValue := STRING_TO_WSTRING(value);
+
+SetFromString := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set" Id="{e31b979f-6617-429e-8006-1c5dbf4784a7}">
+      <Declaration><![CDATA[METHOD Set : BOOL
+VAR_INPUT
+	source : ANY;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Set := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

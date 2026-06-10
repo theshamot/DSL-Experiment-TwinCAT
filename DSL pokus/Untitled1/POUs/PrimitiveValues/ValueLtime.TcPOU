@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ValueLtime" Id="{59dd599f-aa8a-43d0-b0ea-890c87db26aa}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueLtime EXTENDS ValueLtimeRead IMPLEMENTS Value
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="SetFromType" Id="{67daa6c9-022e-4330-9f7b-23dadc3700a6}">
+      <Declaration><![CDATA[METHOD SetFromType : BOOL
+VAR_INPUT
+	source : __SYSTEM.AnyType;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SetFromType := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetFromString" Id="{c0dee8ad-474f-46d4-b03d-f1879a21b722}">
+      <Declaration><![CDATA[METHOD SetFromString : BOOL
+VAR_INPUT
+	value : T_MaxString;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisValue := STRING_TO_LTIME(value);
+
+SetFromString := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set" Id="{0118e07c-9964-41e2-9326-ccacde6cf146}">
+      <Declaration><![CDATA[METHOD Set : BOOL
+VAR_INPUT
+	source : ANY;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Set := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

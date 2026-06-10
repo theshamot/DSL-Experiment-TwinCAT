@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ValueUlint" Id="{dd582951-0607-4d32-87e2-cce3f481d47b}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueUlint EXTENDS ValueUlintRead IMPLEMENTS Value
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="SetFromType" Id="{15e34f04-9d32-4874-9cbd-689c6875eb8d}">
+      <Declaration><![CDATA[METHOD SetFromType : BOOL
+VAR_INPUT
+	source : __SYSTEM.AnyType;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SetFromType := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetFromString" Id="{a66b8440-e431-49a3-9951-52e333c55b26}">
+      <Declaration><![CDATA[METHOD SetFromString : BOOL
+VAR_INPUT
+	value : T_MaxString;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisValue := STRING_TO_ULINT(value);
+
+SetFromString := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set" Id="{8d51649c-9006-4e38-91b6-00d687146b61}">
+      <Declaration><![CDATA[METHOD Set : BOOL
+VAR_INPUT
+	source : ANY;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Set := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

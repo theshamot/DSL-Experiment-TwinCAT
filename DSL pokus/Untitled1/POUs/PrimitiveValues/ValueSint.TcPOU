@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ValueSint" Id="{77f87b5c-cde0-4e66-89ee-c3f98a93ef2f}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueSint EXTENDS ValueSintRead IMPLEMENTS Value
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="SetFromType" Id="{01d1452f-4bdb-4c55-b2c8-11e4c611b565}">
+      <Declaration><![CDATA[METHOD SetFromType : BOOL
+VAR_INPUT
+	source : __SYSTEM.AnyType;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SetFromType := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetFromString" Id="{fe050438-110b-44f9-9f56-76244a55369a}">
+      <Declaration><![CDATA[METHOD SetFromString : BOOL
+VAR_INPUT
+	value : T_MaxString;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisValue := STRING_TO_SINT(value);
+
+SetFromString := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set" Id="{d2614c14-6b47-4e87-bd59-1f0b9c12a3a7}">
+      <Declaration><![CDATA[METHOD Set : BOOL
+VAR_INPUT
+	source : ANY;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Set := ConvertAnyType(source, thisAnyType);]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

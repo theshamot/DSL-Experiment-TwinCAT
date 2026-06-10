@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ValueTodRead" Id="{99e22cc7-4f84-4017-b299-73745470a0ec}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueTodRead EXTENDS ValueBase IMPLEMENTS ValueRead
+VAR
+	thisValue : TOD;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="GetThisAnyType" Id="{b611a668-dedb-4f75-b0de-a1201faf4012}">
+      <Declaration><![CDATA[{attribute 'call_after_global_init_slot' := '1'}
+{attribute 'call_after_online_change_slot' := '1'}
+METHOD PROTECTED GetThisAnyType
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[thisAnyType := ToAnyType(thisValue);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetAsType" Id="{d3bc7ca5-5d60-4077-93da-43aa1cb8fa9b}">
+      <Declaration><![CDATA[METHOD GetAsType : BOOL
+VAR_INPUT
+	destination : __SYSTEM.AnyType;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetAsType := ConvertAnyType(thisAnyType, destination);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetAsString" Id="{6d2c81a2-0010-47cc-bea7-f99a46436332}">
+      <Declaration><![CDATA[METHOD GetAsString : T_MaxString
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetAsString := TOD_TO_STRING(thisValue);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Get" Id="{00591381-f399-4c35-98b5-7f42785eed22}">
+      <Declaration><![CDATA[METHOD Get : BOOL
+VAR_INPUT
+	destination : ANY;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Get := ConvertAnyType(thisAnyType, destination);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{98bfc7ea-ae50-4750-a48d-3f73903eb15b}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_ValueType := __SYSTEM.TYPE_CLASS.TYPE_TIMEOFDAY;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Value" Id="{f9f9a2fa-baf7-40d8-9f14-6235129ce8c8}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Value : TOD]]></Declaration>
+      <Get Name="Get" Id="{13ed1c84-4907-4806-9da1-6d8a36889432}">
+        <Declaration><![CDATA[VAR
+END_VAR]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Value := thisValue;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

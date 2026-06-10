@@ -1,0 +1,71 @@
+{attribute 'linkalways'}
+{attribute 'hide_all_locals'}
+FUNCTION_BLOCK ValueUlintRead EXTENDS ValueBase IMPLEMENTS ValueRead
+	VAR
+		thisValue : ULINT;
+	END_VAR
+
+BEGIN
+	METHOD FB_init : BOOL
+		VAR_INPUT
+			bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+			bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+		END_VAR
+
+	BEGIN
+		_ValueType := __SYSTEM.TYPE_CLASS.TYPE_ULINT;
+
+	END_METHOD
+
+	METHOD Get : BOOL
+		VAR_INPUT
+			destination : ANY;
+		END_VAR
+
+	BEGIN
+		Get := ConvertAnyType(thisAnyType, destination);
+
+	END_METHOD
+
+	METHOD GetAsString : T_MaxString
+		VAR_INPUT
+		END_VAR
+
+	BEGIN
+		GetAsString := TO_STRING(thisValue);
+
+	END_METHOD
+
+	METHOD GetAsType : BOOL
+		VAR_INPUT
+			destination : __SYSTEM.AnyType;
+		END_VAR
+
+	BEGIN
+		GetAsType := ConvertAnyType(thisAnyType, destination);
+
+	END_METHOD
+
+	{attribute 'call_after_global_init_slot' := '1'}
+	{attribute 'call_after_online_change_slot' := '1'}
+	METHOD PROTECTED GetThisAnyType
+		VAR_INPUT
+		END_VAR
+
+	BEGIN
+		thisAnyType := ToAnyType(thisValue);
+
+	END_METHOD
+
+	{attribute 'monitoring' := 'call'}
+	PROPERTY Value : ULINT
+	GET
+		VAR
+		END_VAR
+
+	BEGIN
+		Value := thisValue;
+
+	END_GET
+	END_PROPERTY
+END_FUNCTION_BLOCK
