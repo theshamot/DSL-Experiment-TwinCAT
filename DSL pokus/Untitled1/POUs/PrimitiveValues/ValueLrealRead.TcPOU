@@ -67,5 +67,18 @@ END_VAR
 ]]></ST>
       </Implementation>
     </Method>
+    <Property Name="Value" Id="{0aa56b4b-e00e-4d56-b87e-1c6b15eaa2ce}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Value : LREAL]]></Declaration>
+      <Get Name="Get" Id="{1be9ebad-1517-4fec-abcf-1c0f272abad9}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Value := thisValue;
+]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
   </POU>
 </TcPlcObject>

@@ -56,4 +56,16 @@ BEGIN
 		thisAnyType := ToAnyType(thisValue);
 		
 	END_METHOD
+
+	{attribute 'monitoring' := 'call'}
+	PROPERTY Value : LREAL
+	GET
+		VAR
+		END_VAR
+		
+	BEGIN
+		Value := thisValue;
+		
+	END_GET
+	END_PROPERTY
 END_FUNCTION_BLOCK

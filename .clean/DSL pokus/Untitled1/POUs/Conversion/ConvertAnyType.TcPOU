@@ -44,6 +44,7 @@ BEGIN
 		ELSE
 			MEMCPY(destination.pValue, source.pValue, TO_UDINT(source.diSize));
 		END_IF
+		
 		ConvertAnyType := TRUE;
 		RETURN;
 	END_IF
